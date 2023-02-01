@@ -1,0 +1,79 @@
+body {
+  background-color: #16161e;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "outfit";
+}
+
+.container {
+  width: 40rem;
+  height: 23rem;
+  background-color: #1a1b26;
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  /* border: 1px solid red; */
+}
+.up {
+  width: 100%;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.buttom {
+  display: flex;
+  flex-direction: column;
+}
+.txt-box {
+  font-family: "outfit";
+
+  height: 2.2rem;
+  width: 50%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  margin-bottom: 2rem;
+}
+#submit {
+  border-radius: 0.2rem;
+  outline: none;
+  border: none;
+  /* width: 50%; */
+  height: 2rem;
+  background-color: rgb(73, 167, 61);
+  font-family: "outfit";
+  font-size: 1rem;
+}
+#submit:hover {
+  cursor: pointer;
+  background-color: rgb(113, 214, 99);
+}
+
+.text {
+  color: white;
+}
+.text a {
+  color: aqua;
+  margin-left: 0.3rem;
+  text-decoration: none;
+}
+.text a:hover {
+  color: rgb(115, 248, 248);
+}
