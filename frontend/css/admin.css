@@ -1,0 +1,9 @@
+body {
+  background-color: #16161e;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "outfit";
+}
