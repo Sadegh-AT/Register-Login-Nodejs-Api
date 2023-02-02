@@ -1,10 +1,10 @@
 const mysql = require("mysql");
 
-const registerDB = mysql.createConnection({
+const RegisterDB = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
   database: "registerDB",
 });
 
-module.exports = registerDB;
+module.exports = RegisterDB;
