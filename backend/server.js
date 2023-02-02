@@ -3,17 +3,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const RegisterDB = require("./db/registerDB");
+const userRoute = require("./routes/usersRoute");
 
-RegisterDB.connect((err) => {
-  if (!err) {
-    let newUserQuery =
-      "INSERT INTO `users` VALUES ('NULL','sadegh','ghasemi','SadeghAT','1234','2020-01-01')";
-    RegisterDB.query(newUserQuery, (err, result) => {
-      if (!err) {
-        console.log("New User Added");
-      }
-    });
-  } else {
-    console.log("error");
-  }
-});
+app.use(bodyParser.json());
+app.use(cors());
+
+app.use("/api/users", userRoute);
