@@ -5,25 +5,15 @@ const RegisterDB = require("../db/registerDB");
 const userRoute = express.Router();
 
 userRoute.post("/new-user", (req, res) => {
-  RegisterDB.connect((err) => {
-    if (!err) {
-      let newUserQuery = `INSERT INTO users VALUES ('NULL','${
-        req.body.name
-      }','${req.body.family}','${req.body.username}','${
-        req.body.password
-      }',"${GetTime()}")`;
+  let newUserQuery = `INSERT INTO users VALUES ('NULL','${req.body.name}','${
+    req.body.family
+  }','${req.body.username}','${req.body.password}',"${GetTime()}")`;
 
-      RegisterDB.query(newUserQuery, (err, result) => {
-        if (!err) {
-          console.log("New User Added");
-          res.send("OK");
-        } else {
-          res.send("Error");
-        }
-      });
+  RegisterDB.query(newUserQuery, (err, result) => {
+    if (!err) {
+      res.send(true);
     } else {
-      console.log("Can not connect to DB");
-      res.send("Can not connect to DB");
+      res.send(false);
     }
   });
 });
