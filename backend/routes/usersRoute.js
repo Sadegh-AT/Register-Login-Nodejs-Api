@@ -5,17 +5,23 @@ const RegisterDB = require("../db/registerDB");
 const userRoute = express.Router();
 
 userRoute.post("/new-user", (req, res) => {
-  let newUserQuery = `INSERT INTO users VALUES ('NULL','${req.body.name}','${
-    req.body.family
-  }','${req.body.username}','${req.body.password}',"${GetTime()}")`;
+  let { name, family, username, password } = req.body;
 
-  RegisterDB.query(newUserQuery, (err, result) => {
-    if (!err) {
-      res.send(true);
-    } else {
-      res.send(false);
-    }
-  });
+  if (Validator(name, family, username, password)) {
+    let newUserQuery = `INSERT INTO users VALUES ('NULL','${req.body.name}','${
+      req.body.family
+    }','${req.body.username}','${req.body.password}',"${GetTime()}")`;
+
+    RegisterDB.query(newUserQuery, (err, result) => {
+      if (!err) {
+        res.send("succses");
+      } else {
+        res.send(false);
+      }
+    });
+  } else {
+    res.send("input is invalid");
+  }
 });
 
 module.exports = userRoute;
@@ -36,4 +42,20 @@ function GetTime() {
     ":" +
     ("00" + date.getSeconds()).slice(-2);
   return date;
+}
+
+function Validator(name, family, username, password) {
+  let pat = /^.*?(?=[\^#%&$\*:<>\?/\{\|\}]).*$/;
+  let regex = new RegExp(pat);
+
+  if (
+    !regex.test(name) &&
+    !regex.test(family) &&
+    !regex.test(username) &&
+    !regex.test(password)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }

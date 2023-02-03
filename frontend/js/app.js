@@ -21,7 +21,11 @@ form.addEventListener("submit", (event) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
-    }).then((res) => console.log(res));
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        console.log(data);
+      });
     clearInput();
   }
 });
