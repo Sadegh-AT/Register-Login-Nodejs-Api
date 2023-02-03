@@ -7,7 +7,7 @@ const submit = document.querySelector("#submit");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (validateInput(name, family, username, password) == false) {
+  if (validateInput(name, family, username, password)) {
     let newUser = {
       name: name.value,
       family: family.value,
@@ -38,11 +38,18 @@ function validateInput(name, family, username, password) {
     if (input.value == "") {
       SeterrorStyle(input);
       RemoveErrorStyle(input);
-    } else {
-      console.log("check");
-      return false;
     }
   });
+  if (
+    name.value != "" &&
+    family.value != "" &&
+    username.value != "" &&
+    password.value != ""
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function clearInput() {
