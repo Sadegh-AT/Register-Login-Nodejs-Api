@@ -41,7 +41,6 @@ body {
 }
 .txt-box {
   font-family: "outfit";
-
   height: 2.2rem;
   width: 50%;
   box-sizing: border-box;
@@ -50,6 +49,12 @@ body {
   padding: 0.5rem;
   border-radius: 0.2rem;
   margin-bottom: 2rem;
+  transition: all 0.17s ease-in-out;
+}
+.txt-box.error {
+  box-shadow: 0px 4px 20px rgba(255, 0, 0, 0.253);
+  border: 1px solid rgba(255, 0, 0, 0.349);
+  scale: 1.08;
 }
 #submit {
   border-radius: 0.2rem;
@@ -64,6 +69,11 @@ body {
 #submit:hover {
   cursor: pointer;
   background-color: rgb(113, 214, 99);
+}
+#submit:disabled {
+  background-color: rgba(48, 114, 39, 0.493);
+  cursor: default;
+  color: rgba(255, 255, 255, 0.164);
 }
 
 .text {
