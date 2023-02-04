@@ -118,3 +118,82 @@ h2 {
 .edit-btn {
   color: rgb(58, 194, 58);
 }
+/* -----Modal----- */
+.black-div {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.61);
+  backdrop-filter: blur(4px);
+  opacity: 1;
+}
+.black-div.active {
+  opacity: 1;
+}
+.delete-modal {
+  width: 40rem;
+  height: 14rem;
+  background-color: #1a1b26;
+  position: fixed;
+  z-index: 10;
+  border-radius: 1rem;
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  box-sizing: border-box;
+  box-shadow: 0px 1rem 3rem black;
+}
+.delete-model-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.delete-model-info h3 {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.delete-model-info p {
+  margin: 0;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.534);
+}
+.delete-modal-btns {
+  display: flex;
+  gap: 2rem;
+}
+
+.delete-modal-btns button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 7rem;
+  height: 2rem;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.delete-modal-btns button:first-child {
+  background-color: rgb(218, 213, 213);
+}
+.delete-modal-btns button:first-child:hover {
+  background-color: rgb(182, 180, 180);
+}
+.delete-modal-btns button:last-child {
+  background-color: rgb(255, 0, 55);
+}
+.delete-modal-btns button:last-child:hover {
+  background-color: rgb(221, 0, 48);
+}
