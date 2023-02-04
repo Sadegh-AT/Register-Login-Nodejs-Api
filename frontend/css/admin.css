@@ -109,6 +109,9 @@ h2 {
 .buttons a:hover {
   filter: brightness(120%);
 }
+.move {
+  transform: translateX(1rem);
+}
 .delete-btn {
   color: rgb(255, 0, 76);
 }
