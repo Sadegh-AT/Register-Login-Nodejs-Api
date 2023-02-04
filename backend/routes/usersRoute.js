@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const RegisterDB = require("../db/registerDB");
+const { json } = require("body-parser");
 
 const userRoute = express.Router();
 
@@ -22,6 +23,19 @@ userRoute.post("/new-user", (req, res) => {
   } else {
     res.send(false);
   }
+});
+userRoute.delete("/remove/:id", (req, res) => {
+  let userId = req.params.id;
+  let deleteUserQuery = `DELETE FROM users WHERE id=${userId}`;
+  RegisterDB.query(deleteUserQuery, (err, result) => {
+    if (!err) {
+      console.log("Delete User");
+      res.send(JSON.stringify(result));
+    } else {
+      console.log(err);
+      res.send(null);
+    }
+  });
 });
 
 module.exports = userRoute;

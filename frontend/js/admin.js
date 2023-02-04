@@ -31,5 +31,3 @@ function UserCard(username, date) {
             </div>`;
   usersDiv.insertAdjacentHTML("afterbegin", card);
 }
-
-function()
