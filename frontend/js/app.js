@@ -24,9 +24,19 @@ form.addEventListener("submit", (event) => {
     })
       .then((res) => res.text())
       .then((data) => {
-        console.log(data);
+        if (data != "true") {
+          SeterrorStyle(name);
+          SeterrorStyle(family);
+          SeterrorStyle(username);
+          SeterrorStyle(password);
+        } else {
+          RemoveAllErrorStyle(name);
+          RemoveAllErrorStyle(family);
+          RemoveAllErrorStyle(username);
+          RemoveAllErrorStyle(password);
+          clearInput();
+        }
       });
-    clearInput();
   }
 });
 
@@ -71,4 +81,7 @@ function RemoveErrorStyle(input) {
   input.addEventListener("input", () => {
     input.classList.remove("error");
   });
+}
+function RemoveAllErrorStyle(input) {
+  input.classList.remove("error");
 }

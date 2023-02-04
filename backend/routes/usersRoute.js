@@ -14,13 +14,13 @@ userRoute.post("/new-user", (req, res) => {
 
     RegisterDB.query(newUserQuery, (err, result) => {
       if (!err) {
-        res.send("succses");
+        res.send(true);
       } else {
         res.send(false);
       }
     });
   } else {
-    res.send("input is invalid");
+    res.send(false);
   }
 });
 
