@@ -45,7 +45,7 @@ function GetTime() {
 }
 
 function Validator(name, family, username, password) {
-  let pat = /^.*?(?=[\^#%&$\*:<>\?/\{\|\}]).*$/;
+  let pat = /^.*?(?=[\^#@%&$\*:<>\?/\{\|\}]).*$/;
   let regex = new RegExp(pat);
   name = name.trim();
   family = family.trim();
