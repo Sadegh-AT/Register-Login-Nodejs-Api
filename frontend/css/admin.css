@@ -218,3 +218,77 @@ img {
 .delete-modal-btns button:last-child:hover {
   background-color: rgb(221, 0, 48);
 }
+/* -----Edit Modal---- */
+
+.edit-modal {
+  width: 40rem;
+  height: 44rem;
+  background-color: #1a1b26;
+  position: fixed;
+  z-index: 10;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2rem;
+  box-sizing: border-box;
+  box-shadow: 0px 1rem 3rem black;
+  scale: 1;
+  pointer-events: all;
+  transition: all 0.2s ease-in-out;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid red; */
+  gap: 2rem;
+}
+.txtDiv {
+  /* border: 1px solid palegreen; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.txtDiv h5 {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.575);
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.txt-box {
+  font-family: "outfit";
+  height: 2.2rem;
+  width: 50%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  margin-bottom: 2rem;
+  transition: all 0.17s ease-in-out;
+}
+.txt-box.error {
+  box-shadow: 0px 4px 20px rgba(255, 0, 0, 0.253);
+  border: 1px solid rgba(255, 0, 0, 0.349);
+  scale: 1.08;
+}
+#submit {
+  border-radius: 0.2rem;
+  outline: none;
+  border: none;
+  width: 50%;
+  height: 2rem;
+  background-color: rgb(73, 167, 61);
+  font-family: "outfit";
+  font-size: 1rem;
+}
+#submit:hover {
+  cursor: pointer;
+  background-color: rgb(113, 214, 99);
+}
