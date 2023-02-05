@@ -24,12 +24,27 @@ userRoute.post("/new-user", (req, res) => {
     res.send(false);
   }
 });
+
 userRoute.delete("/remove/:id", (req, res) => {
   let userId = req.params.id;
   let deleteUserQuery = `DELETE FROM users WHERE id=${userId}`;
   RegisterDB.query(deleteUserQuery, (err, result) => {
     if (!err) {
       console.log("Delete User");
+      res.send(JSON.stringify(result));
+    } else {
+      console.log(err);
+      res.send(null);
+    }
+  });
+});
+
+userRoute.put("/edit/:id", (req, res) => {
+  let userId = req.params.id;
+  let editUserQuery = `UPDATE users SET name='${req.body.name}',family='${req.body.family}',username='${req.body.username}',password='${req.body.password}' WHERE id=${userId}`;
+  RegisterDB.query(editUserQuery, (err, result) => {
+    if (!err) {
+      console.log("Edit User");
       res.send(JSON.stringify(result));
     } else {
       console.log(err);
