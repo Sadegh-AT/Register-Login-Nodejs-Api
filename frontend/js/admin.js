@@ -4,7 +4,19 @@ const EditBtn = document.querySelectorAll(".edit-btn");
 const BlackDiv = document.querySelector(".black-div");
 const DeleteModal = document.querySelector(".delete-modal");
 const EditModal = document.querySelector(".edit-modal");
+const name = document.querySelector("#name");
+const family = document.querySelector("#family");
+const username = document.querySelector("#username");
+const password = document.querySelector("#password");
+const submit = document.querySelector("#submit");
+const form = document.querySelector(".form");
 var userId = null;
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  editUser();
+});
+
 BlackDiv.addEventListener("click", HideDeleteModal);
 BlackDiv.addEventListener("click", HideEditModal);
 window.addEventListener("load", () => {
@@ -44,10 +56,19 @@ function HideDeleteModal() {
 // ---EditModal---
 function ShowEditModel(id) {
   userId = id;
-  BlackDiv.classList.add("active");
-  EditModal.classList.add("active");
 
-  fetch(`http://localhost:3000/api/users/edit/${id}`, { method: "PUT" });
+  fetch(`http://localhost:3000/api/users/get-user/${id}`, {
+    method: "GET",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      BlackDiv.classList.add("active");
+      EditModal.classList.add("active");
+      name.value = data[0].name;
+      family.value = data[0].family;
+      username.value = data[0].username;
+      password.value = data[0].password;
+    });
 }
 function HideEditModal() {
   BlackDiv.classList.remove("active");
@@ -75,5 +96,26 @@ function GetRequest() {
       data.forEach((element) => {
         UserCard(element.username, element.name, element.family, element.id);
       });
+    });
+}
+function editUser() {
+  let newUser = {
+    name: name.value,
+    family: family.value,
+    username: username.value,
+    password: password.value,
+  };
+  fetch(`http://localhost:3000/api/users/edit/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newUser),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      HideEditModal();
+      GetRequest();
     });
 }
