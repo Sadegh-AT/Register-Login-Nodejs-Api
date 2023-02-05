@@ -3,6 +3,7 @@ const DeleteBtn = document.querySelectorAll(".delete-btn");
 const EditBtn = document.querySelectorAll(".edit-btn");
 const BlackDiv = document.querySelector(".black-div");
 const DeleteModal = document.querySelector(".delete-modal");
+var userId = null;
 BlackDiv.addEventListener("click", HideDeleteModal);
 window.addEventListener("load", function () {
   fetch("http://localhost:3000/api/users")
@@ -10,11 +11,11 @@ window.addEventListener("load", function () {
     .then((data) => {
       console.log(data);
       data.forEach((element) => {
-        UserCard(element.username, element.name, element.family);
+        UserCard(element.username, element.name, element.family, element.id);
       });
     });
 });
-function UserCard(username, name, family) {
+function UserCard(username, name, family, id) {
   let card = `<div class="user-card">
                 <div class="profile">
                     <img src="../image/profile-icon-design-free-vector.jpg" alt="">
@@ -25,7 +26,7 @@ function UserCard(username, name, family) {
                         <h6 class="info-date">${name}<span> </span>${family}</h6>
                     </div>
                     <div class="buttons">
-                        <a class="delete-btn" onclick="ShowDeleteModel()"><i class="fa-solid fa-trash"></i></a>
+                        <a class="delete-btn" onclick="ShowDeleteModel(${id})"><i class="fa-solid fa-trash"></i></a>
                         <a class="edit-btn" onclick="Hello()"><i class="fa-solid fa-user-pen"></i></a>
                     </div>
                 </div>
@@ -34,11 +35,23 @@ function UserCard(username, name, family) {
   usersDiv.insertAdjacentHTML("afterbegin", card);
 }
 
-function ShowDeleteModel() {
+function ShowDeleteModel(id) {
+  userId = id;
   BlackDiv.classList.add("active");
   DeleteModal.classList.add("active");
 }
 function HideDeleteModal() {
   BlackDiv.classList.remove("active");
   DeleteModal.classList.remove("active");
+}
+
+function removeUser() {
+  fetch(`http://localhost:3000/api/users/remove/${userId}`, {
+    method: "DELETE",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      HideDeleteModal();
+    });
 }

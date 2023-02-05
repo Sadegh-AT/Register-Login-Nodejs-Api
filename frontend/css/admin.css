@@ -40,7 +40,7 @@ h2 {
 
 .usres {
   /* border: 1px solid palegoldenrod; */
-  padding: 1rem;
+  padding: 1rem 1.5rem;
 }
 .user-card {
   background-color: #222331;
@@ -51,6 +51,10 @@ h2 {
   height: 8rem;
   border-radius: 1rem;
   margin-bottom: 2rem;
+  transition: all 0.16s ease-in-out;
+}
+.user-card:hover {
+  background-color: #3d3e57b6;
 }
 .user-card:last-child {
   margin-bottom: 0rem;
