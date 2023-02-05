@@ -5,15 +5,8 @@ const BlackDiv = document.querySelector(".black-div");
 const DeleteModal = document.querySelector(".delete-modal");
 var userId = null;
 BlackDiv.addEventListener("click", HideDeleteModal);
-window.addEventListener("load", function () {
-  fetch("http://localhost:3000/api/users")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      data.forEach((element) => {
-        UserCard(element.username, element.name, element.family, element.id);
-      });
-    });
+window.addEventListener("load", () => {
+  GetRequest();
 });
 function UserCard(username, name, family, id) {
   let card = `<div class="user-card">
@@ -53,5 +46,18 @@ function removeUser() {
     .then((data) => {
       console.log(data);
       HideDeleteModal();
+      GetRequest();
+    });
+}
+
+function GetRequest() {
+  usersDiv.innerHTML = "";
+  fetch("http://localhost:3000/api/users")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      data.forEach((element) => {
+        UserCard(element.username, element.name, element.family, element.id);
+      });
     });
 }
