@@ -10,11 +10,11 @@ window.addEventListener("load", function () {
     .then((data) => {
       console.log(data);
       data.forEach((element) => {
-        UserCard(element.username, element.RegisterDate);
+        UserCard(element.username, element.name, element.family);
       });
     });
 });
-function UserCard(username, date) {
+function UserCard(username, name, family) {
   let card = `<div class="user-card">
                 <div class="profile">
                     <img src="../image/profile-icon-design-free-vector.jpg" alt="">
@@ -22,7 +22,7 @@ function UserCard(username, date) {
                 <div class="right">
                     <div class="info">
                         <h4 class="info-username">${username}</h4>
-                        <h6 class="info-date">${date}</h6>
+                        <h6 class="info-date">${name}<span> </span>${family}</h6>
                     </div>
                     <div class="buttons">
                         <a class="delete-btn" onclick="ShowDeleteModel()"><i class="fa-solid fa-trash"></i></a>
