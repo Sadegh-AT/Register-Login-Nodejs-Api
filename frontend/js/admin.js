@@ -3,8 +3,10 @@ const DeleteBtn = document.querySelectorAll(".delete-btn");
 const EditBtn = document.querySelectorAll(".edit-btn");
 const BlackDiv = document.querySelector(".black-div");
 const DeleteModal = document.querySelector(".delete-modal");
+const EditModal = document.querySelector(".edit-modal");
 var userId = null;
 BlackDiv.addEventListener("click", HideDeleteModal);
+BlackDiv.addEventListener("click", HideEditModal);
 window.addEventListener("load", () => {
   GetRequest();
 });
@@ -20,7 +22,7 @@ function UserCard(username, name, family, id) {
                     </div>
                     <div class="buttons">
                         <a class="delete-btn" onclick="ShowDeleteModel(${id})"><i class="fa-solid fa-trash"></i></a>
-                        <a class="edit-btn" onclick="Hello()"><i class="fa-solid fa-user-pen"></i></a>
+                        <a class="edit-btn" onclick="ShowEditModel(${id})"><i class="fa-solid fa-user-pen"></i></a>
                     </div>
                 </div>
 
@@ -28,6 +30,7 @@ function UserCard(username, name, family, id) {
   usersDiv.insertAdjacentHTML("afterbegin", card);
 }
 
+// ---DeleteModal---
 function ShowDeleteModel(id) {
   userId = id;
   BlackDiv.classList.add("active");
@@ -36,6 +39,19 @@ function ShowDeleteModel(id) {
 function HideDeleteModal() {
   BlackDiv.classList.remove("active");
   DeleteModal.classList.remove("active");
+}
+
+// ---EditModal---
+function ShowEditModel(id) {
+  userId = id;
+  BlackDiv.classList.add("active");
+  EditModal.classList.add("active");
+
+  fetch(`http://localhost:3000/api/users/edit/${id}`, { method: "PUT" });
+}
+function HideEditModal() {
+  BlackDiv.classList.remove("active");
+  EditModal.classList.remove("active");
 }
 
 function removeUser() {

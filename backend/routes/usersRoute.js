@@ -5,6 +5,19 @@ const { json } = require("body-parser");
 
 const userRoute = express.Router();
 
+userRoute.get("/get-user/:id", (req, res) => {
+  let userId = req.params.id;
+  let getUserQuery = `SELECT * FROM users WHERE id=${userId}`;
+  RegisterDB.query(getUserQuery, (err, result) => {
+    if (!err) {
+      console.log("Edit User");
+      res.send(JSON.stringify(result));
+    } else {
+      console.log(err);
+      res.send(null);
+    }
+  });
+});
 userRoute.post("/new-user", (req, res) => {
   let { name, family, username, password } = req.body;
 
