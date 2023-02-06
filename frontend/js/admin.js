@@ -89,7 +89,7 @@ function removeUser() {
 
 function GetRequest() {
   usersDiv.innerHTML = "";
-  fetch("http://localhost:3000/api/users")
+  fetch("http://localhost:3000/api/users/all-users")
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
